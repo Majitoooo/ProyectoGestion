@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectoBusquedaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="ProyectoBusquedaEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="buscarPorNombre" ReturnType="Collection(ProyectoBusquedaModel.buscarPorNombre_Result)">
+      <Parameter Name="consulta" Mode="In" Type="String" />
+      <Parameter Name="cantidad" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="buscarPorNombre_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="descripcion" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="creador" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="lanzamiento" Nullable="true" MaxLength="50" />
+  </ComplexType>
+</Schema>
