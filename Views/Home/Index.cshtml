@@ -2,9 +2,10 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="container" id="root">
+<div class="container banner" id="root">
     <h1>Busqueda de Inteligencias Artificiales</h1>
-    <input type="text" class="form-control" v-model="txtBusqueda" v-on:keyup.enter="getBusqueda()" list="listaNombres" />
+    <input type="text" class="form-control" v-model="txtBusqueda" v-on:keyup="getBusqueda()" v-on:keyup.enter="getBusqueda()" list="listaNombres"
+           />
 
     <div class="row">
         <div class="col-4">
