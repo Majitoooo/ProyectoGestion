@@ -30,14 +30,14 @@ namespace Proyecto_Gestión.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Buscador de Inteligencias Artificiales";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Estudiantes:";
 
             return View();
         }

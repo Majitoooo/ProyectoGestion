@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|c:\\users\\maria\\onedrive\\documentos\\proyecto b\u00FAsqueda\\proyecto gesti\u00F3n\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\content\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|solutionrelative:content\\styles.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|c:\\users\\maria\\onedrive\\documentos\\proyecto b\u00FAsqueda\\proyecto gesti\u00F3n\\views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|solutionrelative:views\\home\\about.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|c:\\users\\maria\\onedrive\\documentos\\proyecto b\u00FAsqueda\\proyecto gesti\u00F3n\\views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|solutionrelative:views\\home\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DE763B66-1488-462D-80D1-068B6AF571AC}|Proyecto Gesti\u00F3n.csproj|C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\ado\\buscarpornombre_result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -54,33 +62,72 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAqAAAA",
+              "DocumentIndex": 4,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Home\\Contact.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Contact.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Home\\Contact.cshtml",
+              "RelativeToolTip": "Views\\Home\\Contact.cshtml",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAAAgAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-10-24T22:23:20.011Z",
+              "WhenOpened": "2024-10-29T17:33:02.143Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAgwFoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-23T02:54:05.821Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "About.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Home\\About.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\About.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Home\\About.cshtml",
+              "RelativeToolTip": "Views\\Home\\About.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-29T17:31:22.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "styles.css",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Content\\styles.css",
+              "RelativeDocumentMoniker": "Content\\styles.css",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Content\\styles.css",
+              "RelativeToolTip": "Content\\styles.css",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEEAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-10-28T15:02:41.051Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-24T22:23:20.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "buscarPorNombre_Result.cs",
               "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\ADO\\buscarPorNombre_Result.cs",
               "RelativeDocumentMoniker": "ADO\\buscarPorNombre_Result.cs",
@@ -89,19 +136,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-22T22:02:23.806Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\maria\\OneDrive\\Documentos\\Proyecto B\u00FAsqueda\\Proyecto Gesti\u00F3n\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T21:41:44.177Z",
               "EditorCaption": ""
             }
           ]

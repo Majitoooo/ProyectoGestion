@@ -1,53 +1,62 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Buscador";
 }
 
-<div class="container banner" id="root">
-    <h1>Busqueda de Inteligencias Artificiales</h1>
-    <input type="text" class="form-control" v-model="txtBusqueda" v-on:keyup="getBusqueda()" v-on:keyup.enter="getBusqueda()" list="listaNombres"
-           />
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/Content/styles.css" />
 
-    <div class="row">
-        <div class="col-4">
+<div class="container-fluid banner text-center text-light py-5">
+    <h1>🔍 Búsqueda de Inteligencias Artificiales</h1>
+</div>
+
+<div class="container my-5" id="root">
+    <div class="search-bar mb-4 text-center">
+        <input type="text" class="form-control form-control-lg search-input" placeholder="Buscar inteligencia artificial..."
+               v-model="txtBusqueda" v-on:keyup="getBusqueda()" v-on:keyup.enter="getBusqueda()" list="listaNombres" />
+    </div>
+
+    <!-- Lista y detalles de resultados -->
+    <div class="row d-flex w-100">
+        <!-- Lista de resultados -->
+        <div class="col-12 col-md-4 mb-4 mb-md-0 list-group-container">
             <div class="list-group" id="list-tab" role="tablist">
-                <!-- Aquí usamos v-for para generar las opciones dinámicas -->
                 <a v-for="(item, index) in listaResultados"
                    :key="index"
                    :id="'list-' + item.nombre + '-list'"
-                   class="list-group-item list-group-item-action"
+                   class="list-group-item list-group-item-action result-item"
                    :class="{'active': index === 0}"
                    data-bs-toggle="list"
                    :href="'#list-' + item.nombre"
                    role="tab"
                    :aria-controls="'list-' + item.nombre">
-                    {{ item.nombre }} 
+                    <strong>{{ item.nombre }}</strong>
                 </a>
             </div>
         </div>
-        <div class="col-8">
+
+        <!-- Detalles del resultado seleccionado -->
+        <div class="col-12 col-md-8 details-pane">
             <div class="tab-content" id="nav-tabContent">
-                <!-- Crear los tab-content dinámicamente para cada item -->
                 <div v-for="(item, index) in listaResultados"
                      :key="index"
                      :id="'list-' + item.nombre"
-                     class="tab-pane fade"
+                     class="tab-pane fade p-4 rounded shadow-sm details-card"
                      :class="{'show active': index === 0}"
                      role="tabpanel"
                      :aria-labelledby="'list-' + item.nombre + '-list'">
-                    <div>
-                        <p>Descripción: {{ item.descripcion }}</p>
-                        <p>Tipo: {{ item.tipo}}</p>
-                        <p>Empresa cradora: {{ item.creador}}</p>
-                        <p>Año de su Lanzamiento: {{ item.lanzamiento}}</p>
-                    </div>
+                    <h4>{{ item.nombre }}</h4>
+                    <p><strong>Descripción:</strong> {{ item.descripcion }}</p>
+                    <p><strong>Tipo:</strong> {{ item.tipo }}</p>
+                    <p><strong>Empresa creadora:</strong> {{ item.creador }}</p>
+                    <p><strong>Año de su Lanzamiento:</strong> {{ item.lanzamiento }}</p>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
 
-@section Scripts{
+@section Scripts {
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
