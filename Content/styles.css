@@ -104,3 +104,55 @@ footer {
     padding: 1rem 0;
     width: 100%;
 }
+
+/* Estilo personalizado para el select */
+.form-select {
+    border: 2px solid #b0e0f7;
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, border-color 0.3s;
+    background-color: #ffffff; /* Fondo blanco para el select */
+    color: #333; /* Color de texto */
+}
+
+.form-select:focus {
+    border-color: #8fbfef;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: #f4f6f9; /* Fondo claro al enfocar */
+}
+
+.form-select option {
+    background-color: #ffffff; /* Fondo blanco para opciones */
+    color: #333; /* Color de texto de opciones */
+}
+
+.select-container {
+    display: flex;
+    justify-content: center; /* Centrado de los selects */
+    width: auto; /* El contenedor se ajustará al tamaño de los selects */
+    gap: 0.1rem; /* Reduce el espacio entre los selects */
+    margin-top: 1rem;
+}
+
+.form-select {
+    max-width: 300px; /* Asegúrate de que no sobrepasen el tamaño esperado */
+    border: 2px solid #b0e0f7;
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s, border-color 0.3s;
+    background-color: #e3f2fd;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-select:focus {
+    border-color: #8fbfef;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: #b0e0f7;
+}

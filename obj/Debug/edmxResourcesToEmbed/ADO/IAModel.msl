@@ -10,6 +10,7 @@
           <ScalarProperty Name="tipo" ColumnName="tipo" />
           <ScalarProperty Name="creador" ColumnName="creador" />
           <ScalarProperty Name="lanzamiento" ColumnName="lanzamiento" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

@@ -1,22 +1,57 @@
-﻿@{
-    ViewBag.Title = "Buscador";
-}
+﻿@{ ViewBag.Title = "Buscador"; }
 
-<!-- Google Fonts -->
+<!-- Estilos CSS -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="~/Content/styles.css" />
 
+<!-- Banner -->
 <div class="container-fluid banner text-center text-light py-5">
     <h1>🔍 Búsqueda de Inteligencias Artificiales</h1>
 </div>
 
+<!-- Contenedor principal -->
 <div class="container my-5" id="root">
+    <!-- Barra de búsqueda -->
     <div class="search-bar mb-4 text-center">
-        <input type="text" class="form-control form-control-lg search-input" placeholder="Buscar inteligencia artificial..."
-               v-model="txtBusqueda" v-on:keyup="getBusqueda()" v-on:keyup.enter="getBusqueda()" list="listaNombres" />
+        <!-- Campo de texto para buscar -->
+        <input type="text"
+               class="form-control form-control-lg search-input"
+               placeholder="Buscar inteligencia artificial..."
+               v-model="txtBusqueda"
+               v-on:keyup="getBusqueda()"
+               v-on:keyup.enter="getBusqueda()"
+               list="listaNombres" />
+        <!-- Contenedor para los selects, utilizando flexbox -->
+        <div class="select-container">
+            <!-- Selector de categoría -->
+            <select v-model="categoriaSeleccionada"
+                    class="form-select me-2"
+                    aria-label="Seleccione una categoría">
+                <option value="">-- Selecciona una categoría --</option>
+                <option value="NLP">NLP</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Generative AI">IA Generativa</option>
+                <option value="Healthcare">Cuidado de la Salud</option>
+                <option value="Computer Vision">Visión por Computadora</option>
+                <option value="Voice Assistant">Asistente de Voz</option>
+                <option value="Creative AI">IA Creativa</option>
+                <option value="Translation">Traducción</option>
+            </select>
+
+            <!-- Selector de precio -->
+            <select v-model="tipoPrecioSeleccionado"
+                    class="form-select"
+                    aria-label="Seleccione un precio">
+                <option value="">-- Selecciona un precio --</option>
+                <option value="Gratis">Gratis</option>
+                <option value="Freemium">Freemium</option>
+                <option value="Pago">Pago</option>
+                <option value="Incluido con dispositivo">Incluido con dispositivo</option>
+            </select>
+        </div>
     </div>
 
-    <!-- Lista y detalles de resultados -->
+    <!-- Resultados -->
     <div class="row d-flex w-100">
         <!-- Lista de resultados -->
         <div class="col-12 col-md-4 mb-4 mb-md-0 list-group-container">
@@ -50,6 +85,7 @@
                     <p><strong>Tipo:</strong> {{ item.tipo }}</p>
                     <p><strong>Empresa creadora:</strong> {{ item.creador }}</p>
                     <p><strong>Año de su Lanzamiento:</strong> {{ item.lanzamiento }}</p>
+                    <p><strong>Precio:</strong> {{ item.precio }}</p>
                 </div>
             </div>
         </div>
@@ -57,34 +93,54 @@
 </div>
 
 @section Scripts {
+    <!-- Scripts necesarios -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js" integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
+            integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer">
+    </script>
 
     <script>
         var app = new Vue({
             el: "#root",
             data: {
                 txtBusqueda: '',
+                categoriaSeleccionada: '',
+                tipoPrecioSeleccionado: '',
                 listaResultados: []
+            },
+            watch: {
+                categoriaSeleccionada: function () {
+                    this.getBusqueda();
+                },
+                tipoPrecioSeleccionado: function () {
+                    this.getBusqueda();
+                }
             },
             methods: {
                 getBusqueda() {
-                    if (this.txtBusqueda !== '') {
-                        let cadena = this.txtBusqueda.trim();
-                        let cantidad = 10;
+                    let parametros = {
+                        nombre: this.txtBusqueda.trim() || '', // Enviar cadena vacía si no hay texto
+                        cantidad: 10, // Número fijo de resultados
+                    };
 
-                        axios.get("http://localhost:54233/Home/BuscarPorNombre?nombre=" + cadena + "&cantidad=" + cantidad)
-                            .then(function (response) {
-                                app.listaResultados = response.data;
-                            }).catch(function (error) {
-                                console.log(error);
-                            })
-                    }
-                    else {
-                        this.listaResultados = [];
-                    }
+                    // Solo agregar los parámetros si tienen un valor
+                    if (this.categoriaSeleccionada) parametros.tipo = this.categoriaSeleccionada;
+                    if (this.tipoPrecioSeleccionado) parametros.tipo_precio = this.tipoPrecioSeleccionado;
+
+                    console.log('Parámetros de búsqueda:', parametros); // Para depuración
+
+                    // Realizar la búsqueda
+                    axios.get("/Home/BuscarPorNombre", { params: parametros })
+                        .then(function (response) {
+                            app.listaResultados = response.data;
+                        }).catch(function (error) {
+                            console.log(error);
+                        });
                 }
             }
         });
+
     </script>
 }

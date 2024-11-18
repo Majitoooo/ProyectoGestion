@@ -13,5 +13,6 @@
     <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="creador" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="lanzamiento" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="precio" Nullable="true" MaxLength="100" />
   </ComplexType>
 </Schema>

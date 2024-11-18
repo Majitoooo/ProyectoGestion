@@ -14,15 +14,29 @@ namespace Proyecto_Gestión.Controllers
             return View();
         }
 
-        public JsonResult BuscarPorNombre(string nombre, int cantidad)
+        public JsonResult BuscarPorNombre(string nombre, int cantidad, string tipo = null, string tipo_precio = null)
         {
             try
             {
                 ProyectoBusquedaEntities contexto = new ProyectoBusquedaEntities();
-                var lista  = contexto.buscarPorNombre(nombre, cantidad);
-                return Json(lista,JsonRequestBehavior.AllowGet);
+                var resultados = contexto.buscarPorNombre(nombre, cantidad, tipo, tipo_precio).ToList();
+
+                var lista = resultados.Select(item => new
+                {
+                    item.id,
+                    item.nombre,
+                    item.descripcion,
+                    item.tipo,
+                    item.creador,
+                    item.lanzamiento,
+                    item.Categoria,
+                    item.precio,
+                    item.tipo_precio
+                }).ToList();
+
+                return Json(lista, JsonRequestBehavior.AllowGet);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 return Json(ex.Message, JsonRequestBehavior.AllowGet);
             }
@@ -31,14 +45,12 @@ namespace Proyecto_Gestión.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Buscador de Inteligencias Artificiales";
-
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Estudiantes:";
-
             return View();
         }
     }

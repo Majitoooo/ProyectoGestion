@@ -14,31 +14,39 @@ namespace Proyecto_Gestión.ADO
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+
     public partial class ProyectoBusquedaEntities : DbContext
     {
         public ProyectoBusquedaEntities()
             : base("name=ProyectoBusquedaEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
-    
-        public virtual ObjectResult<buscarPorNombre_Result> buscarPorNombre(string consulta, Nullable<int> cantidad)
+
+        // Adaptar el método para aceptar los nuevos parámetros
+        public virtual ObjectResult<buscarPorNombre_Result> buscarPorNombre(string consulta, Nullable<int> cantidad, string tipo = null, string tipo_precio = null)
         {
             var consultaParameter = consulta != null ?
                 new ObjectParameter("consulta", consulta) :
                 new ObjectParameter("consulta", typeof(string));
-    
+
             var cantidadParameter = cantidad.HasValue ?
                 new ObjectParameter("cantidad", cantidad) :
                 new ObjectParameter("cantidad", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<buscarPorNombre_Result>("buscarPorNombre", consultaParameter, cantidadParameter);
+
+            var tipoParameter = tipo != null ?
+                new ObjectParameter("tipo", tipo) :
+                new ObjectParameter("tipo", typeof(string));
+
+            var tipo_precioParameter = tipo_precio != null ?
+                new ObjectParameter("tipo_precio", tipo_precio) :
+                new ObjectParameter("tipo_precio", typeof(string));
+
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<buscarPorNombre_Result>("buscarPorNombre", consultaParameter, cantidadParameter, tipoParameter, tipo_precioParameter);
         }
     }
 }

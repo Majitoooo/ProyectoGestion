@@ -28,7 +28,8 @@
           <Property Type="String" Name="tipo" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="creador" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="lanzamiento" Nullable="true" MaxLength="50" />
-        </ComplexType>
+		<Property Type="String" Name="precio" Nullable="true" MaxLength="100" />
+		</ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -44,7 +45,8 @@
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="creador" ColumnName="creador" />
                 <ScalarProperty Name="lanzamiento" ColumnName="lanzamiento" />
-              </ComplexTypeMapping>
+				 <ScalarProperty Name="precio" ColumnName="precio" />
+			  </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
         </EntityContainerMapping>

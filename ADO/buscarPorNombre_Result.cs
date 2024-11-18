@@ -19,5 +19,8 @@ namespace Proyecto_Gestión.ADO
         public string tipo { get; set; }
         public string creador { get; set; }
         public string lanzamiento { get; set; }
+        public string Categoria { get; set; }
+        public string tipo_precio { get; set; }
+        public string precio {  get; set; }
     }
 }
