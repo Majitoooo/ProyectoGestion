@@ -3,17 +3,77 @@
 <!-- Estilos CSS -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="~/Content/styles.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" />
 
 <!-- Banner -->
 <div class="container-fluid banner text-center text-light py-5">
     <h1>🔍 Búsqueda de Inteligencias Artificiales</h1>
 </div>
 
+<!-- Botón para activar el offcanvas con ícono -->
+<div class="text-end me-3">
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRecomendaciones" title="Ver Historial y Recomendaciones" aria-controls="offcanvasRecomendaciones">
+        <i class="bi bi-box-arrow-up-right"></i>
+    </button>
+</div>
+
+<!-- HTML para la estructura del offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRecomendaciones" aria-labelledby="offcanvasRecomendacionesLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRecomendacionesLabel">Historial y Recomendaciones</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" id="offcanvasContent">
+        <!-- Historial de búsquedas -->
+        <div v-if="historial && historial.length > 0">
+            <h2>Historial de Búsqueda</h2>
+            <ul class="list-group mb-4">
+                <li v-for="(item, index) in historial" :key="'hist-'+index" class="list-group-item">
+                    <strong>{{ item.consulta }}</strong> - {{ formatDate(item.fechaBusqueda) }}
+                </li>
+            </ul>
+        </div>
+        <div v-else>
+            <p>No hay historial de búsquedas disponible</p>
+        </div>
+
+        <!-- Recomendaciones -->
+        <!-- Recomendaciones -->
+        <div v-if="recomendaciones && recomendaciones.length > 0">
+            <h2>Recomendaciones</h2>
+            <div class="list-group">
+                <div v-for="(item, index) in recomendaciones"
+                     :key="'rec-'+index"
+                     class="list-group-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <h5 class="mb-1">{{ item.nombre }}</h5>
+                        <span class="badge" :class="{
+                    'bg-success': item.relevancia === 'Alta',
+                    'bg-warning': item.relevancia === 'Media',
+                    'bg-info': item.relevancia === 'Baja'
+                }">{{ item.relevancia }}</span>
+                    </div>
+                    <p class="mb-1">{{ item.descripcion }}</p>
+                    <small>
+                        <span class="me-2"><strong>Categoría:</strong> {{ item.Categoria }}</span>
+                        <span class="me-2"><strong>Creador:</strong> {{ item.creador }}</span>
+                        <span><strong>Precio:</strong> {{ item.precio }} ({{ item.tipo_precio }})</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+        <div v-else>
+            <p>No hay recomendaciones disponibles</p>
+        </div>
+
+    </div>
+</div>
+
+
 <!-- Contenedor principal -->
 <div class="container my-5" id="root">
     <!-- Barra de búsqueda -->
-    <div class="search-bar mb-4 text-center">
-        <!-- Campo de texto para buscar -->
+    <div class="search-bar mb-2 text-center">
         <input type="text"
                class="form-control form-control-lg search-input"
                placeholder="Buscar inteligencia artificial..."
@@ -21,12 +81,10 @@
                v-on:keyup="getBusqueda()"
                v-on:keyup.enter="getBusqueda()"
                list="listaNombres" />
-        <!-- Contenedor para los selects, utilizando flexbox -->
-        <div class="select-container">
-            <!-- Selector de categoría -->
-            <select v-model="categoriaSeleccionada"
-                    class="form-select me-2"
-                    aria-label="Seleccione una categoría">
+
+        <!-- Filtros -->
+        <div class="select-container mt-2 mx-auto">
+            <select v-model="categoriaSeleccionada" class="form-select me-2" aria-label="Seleccione una categoría">
                 <option value="">-- Selecciona una categoría --</option>
                 <option value="NLP">NLP</option>
                 <option value="Machine Learning">Machine Learning</option>
@@ -38,10 +96,7 @@
                 <option value="Translation">Traducción</option>
             </select>
 
-            <!-- Selector de precio -->
-            <select v-model="tipoPrecioSeleccionado"
-                    class="form-select"
-                    aria-label="Seleccione un precio">
+            <select v-model="tipoPrecioSeleccionado" class="form-select" aria-label="Seleccione un precio">
                 <option value="">-- Selecciona un precio --</option>
                 <option value="Gratis">Gratis</option>
                 <option value="Freemium">Freemium</option>
@@ -86,6 +141,12 @@
                     <p><strong>Empresa creadora:</strong> {{ item.creador }}</p>
                     <p><strong>Año de su Lanzamiento:</strong> {{ item.lanzamiento }}</p>
                     <p><strong>Precio:</strong> {{ item.precio }}</p>
+                    <p>
+                        <strong>Ir a la Página de la IA:</strong>
+                        <a :href="item.Enlace" target="_blank" rel="noopener noreferrer">
+                            {{ item.Enlace }}
+                        </a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -93,15 +154,81 @@
 </div>
 
 @section Scripts {
-    <!-- Scripts necesarios -->
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"
-            integrity="sha512-DdX/YwF5e41Ok+AI81HI8f5/5UsoxCVT9GKYZRIzpLxb8Twz4ZwPPX+jQMwMhNQ9b5+zDEefc+dcvQoPWGNZ3g=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer">
-    </script>
 
     <script>
+        // Vue para el offcanvas
+        var offcanvasApp = new Vue({
+            el: '#offcanvasContent',
+            data: {
+                historial: [],
+                recomendaciones: [],
+                usuarioId: "12345" // Considera cambiar esto dinámicamente según el usuario actual
+            },
+            mounted() {
+                this.obtenerHistorial();
+                this.obtenerRecomendaciones();
+            },
+            methods: {
+                obtenerHistorial() {
+                    axios.get("/Home/ObtenerHistorial", {
+                        params: { usuarioId: this.usuarioId }
+                    })
+                        .then(response => {
+                            if (response.data && Array.isArray(response.data)) {
+                                // Ordenar por fecha de búsqueda más reciente
+                                this.historial = response.data.sort((a, b) =>
+                                    new Date(b.fechaBusqueda) - new Date(a.fechaBusqueda)
+                                );
+                            } else {
+                                this.historial = [];
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error al obtener historial:', error);
+                            this.historial = [];
+                        });
+                },
+                obtenerRecomendaciones() {
+                    axios.get("/Home/ObtenerRecomendaciones", { params: { usuarioId: this.usuarioId } })
+                        .then(response => this.recomendaciones = Array.isArray(response.data) ? response.data : [])
+                        .catch(() => this.recomendaciones = []);
+                },
+                formatDate(dateString) {
+                    if (!dateString) return '';
+                    // Convertir la fecha de formato "/Date(timestamp)/" a objeto Date
+                    const timestamp = dateString.match(/\d+/);
+                    if (timestamp) {
+                        const date = new Date(parseInt(timestamp[0]));
+                        return date.toLocaleString('es-ES', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    }
+                    // Si la fecha ya viene en formato ISO
+                    const date = new Date(dateString);
+                    if (!isNaN(date.getTime())) {
+                        return date.toLocaleString('es-ES', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    }
+                    return 'Fecha no válida';
+                }
+            }
+        });
+
+
+        // Vue para el buscador principal
         var app = new Vue({
             el: "#root",
             data: {
@@ -111,36 +238,23 @@
                 listaResultados: []
             },
             watch: {
-                categoriaSeleccionada: function () {
-                    this.getBusqueda();
-                },
-                tipoPrecioSeleccionado: function () {
-                    this.getBusqueda();
-                }
+                txtBusqueda: "getBusqueda",
+                categoriaSeleccionada: "getBusqueda",
+                tipoPrecioSeleccionado: "getBusqueda"
             },
             methods: {
                 getBusqueda() {
                     let parametros = {
-                        nombre: this.txtBusqueda.trim() || '', // Enviar cadena vacía si no hay texto
-                        cantidad: 10, // Número fijo de resultados
+                        nombre: this.txtBusqueda.trim() || '',
+                        cantidad: 10,
+                        tipo: this.categoriaSeleccionada || null,
+                        tipo_precio: this.tipoPrecioSeleccionado || null
                     };
-
-                    // Solo agregar los parámetros si tienen un valor
-                    if (this.categoriaSeleccionada) parametros.tipo = this.categoriaSeleccionada;
-                    if (this.tipoPrecioSeleccionado) parametros.tipo_precio = this.tipoPrecioSeleccionado;
-
-                    console.log('Parámetros de búsqueda:', parametros); // Para depuración
-
-                    // Realizar la búsqueda
                     axios.get("/Home/BuscarPorNombre", { params: parametros })
-                        .then(function (response) {
-                            app.listaResultados = response.data;
-                        }).catch(function (error) {
-                            console.log(error);
-                        });
+                        .then(response => this.listaResultados = response.data)
+                        .catch(() => this.listaResultados = []);
                 }
             }
         });
-
     </script>
 }

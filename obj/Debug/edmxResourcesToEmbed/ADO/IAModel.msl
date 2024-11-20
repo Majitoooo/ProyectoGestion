@@ -11,8 +11,38 @@
           <ScalarProperty Name="creador" ColumnName="creador" />
           <ScalarProperty Name="lanzamiento" ColumnName="lanzamiento" />
           <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="Enlace" ColumnName="Enlace" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="ias">
+      <EntityTypeMapping TypeName="ProyectoBusquedaModel.ias">
+        <MappingFragment StoreEntitySet="ias">
+          <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+          <ScalarProperty Name="tipo_precio" ColumnName="tipo_precio" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="lanzamiento" ColumnName="lanzamiento" />
+          <ScalarProperty Name="creador" ColumnName="creador" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HistorialBusqueda">
+      <EntityTypeMapping TypeName="ProyectoBusquedaModel.HistorialBusqueda">
+        <MappingFragment StoreEntitySet="HistorialBusqueda">
+          <ScalarProperty Name="fechaBusqueda" ColumnName="fechaBusqueda" />
+          <ScalarProperty Name="tipoPrecio" ColumnName="tipoPrecio" />
+          <ScalarProperty Name="categoria" ColumnName="categoria" />
+          <ScalarProperty Name="consulta" ColumnName="consulta" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="usuarioId" ColumnName="usuarioId" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

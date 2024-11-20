@@ -235,6 +235,9 @@
     <Compile Include="ADO\buscarPorNombre_Result.cs">
       <DependentUpon>IAModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ADO\HistorialBusqueda.cs">
+      <DependentUpon>IAModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ADO\IAModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -249,6 +252,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>IAModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ADO\ias.cs">
+      <DependentUpon>IAModel.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />

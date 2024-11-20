@@ -4,7 +4,12 @@
     <FunctionImport Name="buscarPorNombre" ReturnType="Collection(ProyectoBusquedaModel.buscarPorNombre_Result)">
       <Parameter Name="consulta" Mode="In" Type="String" />
       <Parameter Name="cantidad" Mode="In" Type="Int32" />
+      <Parameter Name="Categoria" Mode="In" Type="String" />
+      <Parameter Name="tipo" Mode="In" Type="String" />
+      <Parameter Name="tipo_precio" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="ias" EntityType="ProyectoBusquedaModel.ias" />
+    <EntitySet Name="HistorialBusqueda" EntityType="ProyectoBusquedaModel.HistorialBusqueda" />
   </EntityContainer>
   <ComplexType Name="buscarPorNombre_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -14,5 +19,35 @@
     <Property Type="String" Name="creador" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="lanzamiento" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="precio" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Enlace" Nullable="true" MaxLength="100" />
   </ComplexType>
+  <EntityType Name="ias">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="descripcion" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="creador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lanzamiento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="precio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="tipo_precio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Enlace" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="HistorialBusqueda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usuarioId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="consulta" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="tipoPrecio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="fechaBusqueda" Type="DateTime" Precision="3" />
+  </EntityType>
 </Schema>

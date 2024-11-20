@@ -4,14 +4,67 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ProyectoBusquedaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ProyectoBusquedaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="HistorialBusqueda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="usuarioId" Type="nvarchar" MaxLength="50" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="255" />
+          <Property Name="consulta" Type="nvarchar" MaxLength="1000" />
+          <Property Name="categoria" Type="nvarchar" MaxLength="255" />
+          <Property Name="tipoPrecio" Type="nvarchar" MaxLength="100" />
+          <Property Name="fechaBusqueda" Type="datetime" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ProyectoBusqueda.dbo.ias' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="ias">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="descripcion" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="100" />
+          <Property Name="creador" Type="nvarchar" MaxLength="50" />
+          <Property Name="lanzamiento" Type="nvarchar" MaxLength="50" />
+          <Property Name="Categoria" Type="nvarchar" MaxLength="255" />
+          <Property Name="precio" Type="nvarchar" MaxLength="100" />
+          <Property Name="tipo_precio" Type="nvarchar" MaxLength="100" />
+		<Property Name="Enlace" Type="nvarchar" MaxLength="100" />
+		</EntityType>
         <Function Name="buscarPorNombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="consulta" Type="nvarchar" Mode="In" />
           <Parameter Name="cantidad" Type="int" Mode="In" />
+          <Parameter Name="Categoria" Type="nvarchar" Mode="In" />
+          <Parameter Name="tipo" Type="nvarchar" Mode="In" />
+          <Parameter Name="tipo_precio" Type="nvarchar" Mode="In" />
         </Function>
-        <EntityContainer Name="ProyectoBusquedaModelStoreContainer" />
-      </Schema>
-    </edmx:StorageModels>
+        <Function Name="fnEliminarAcentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+          <Parameter Name="consulta" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="ProyectoBusquedaModelStoreContainer">
+          <EntitySet Name="HistorialBusqueda" EntityType="Self.HistorialBusqueda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ias" EntityType="Self.ias" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>
+				SELECT
+				[ias].[id] AS [id],
+				[ias].[nombre] AS [nombre],
+				[ias].[descripcion] AS [descripcion],
+				[ias].[tipo] AS [tipo],
+				[ias].[creador] AS [creador],
+				[ias].[lanzamiento] AS [lanzamiento],
+				[ias].[Categoria] AS [Categoria],
+				[ias].[precio] AS [precio],
+				[ias].[tipo_precio] AS [tipo_precio],
+				[ias].[Enlace] AS [Enlace]
+				FROM [dbo].[ias] AS [ias]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ProyectoBusquedaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -19,7 +72,12 @@
           <FunctionImport Name="buscarPorNombre" ReturnType="Collection(ProyectoBusquedaModel.buscarPorNombre_Result)">
             <Parameter Name="consulta" Mode="In" Type="String" />
             <Parameter Name="cantidad" Mode="In" Type="Int32" />
+            <Parameter Name="Categoria" Mode="In" Type="String" />
+            <Parameter Name="tipo" Mode="In" Type="String" />
+            <Parameter Name="tipo_precio" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="ias" EntityType="ProyectoBusquedaModel.ias" />
+          <EntitySet Name="HistorialBusqueda" EntityType="ProyectoBusquedaModel.HistorialBusqueda" />
         </EntityContainer>
         <ComplexType Name="buscarPorNombre_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -29,7 +87,38 @@
           <Property Type="String" Name="creador" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="lanzamiento" Nullable="true" MaxLength="50" />
 		<Property Type="String" Name="precio" Nullable="true" MaxLength="100" />
+		<Property Type="String" Name="Enlace" Nullable="true" MaxLength="100" />
+
 		</ComplexType>
+        <EntityType Name="ias">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="descripcion" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="tipo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="creador" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lanzamiento" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="precio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tipo_precio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+			<Property Name="Enlace" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+		</EntityType>
+        <EntityType Name="HistorialBusqueda">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="usuarioId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="consulta" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="categoria" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="tipoPrecio" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fechaBusqueda" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -46,9 +135,40 @@
                 <ScalarProperty Name="creador" ColumnName="creador" />
                 <ScalarProperty Name="lanzamiento" ColumnName="lanzamiento" />
 				 <ScalarProperty Name="precio" ColumnName="precio" />
+				  <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+
 			  </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="ias">
+            <EntityTypeMapping TypeName="ProyectoBusquedaModel.ias">
+              <MappingFragment StoreEntitySet="ias">
+				  <ScalarProperty Name="Enlace" ColumnName="Enlace" />
+				  <ScalarProperty Name="tipo_precio" ColumnName="tipo_precio" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="lanzamiento" ColumnName="lanzamiento" />
+                <ScalarProperty Name="creador" ColumnName="creador" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistorialBusqueda">
+            <EntityTypeMapping TypeName="ProyectoBusquedaModel.HistorialBusqueda">
+              <MappingFragment StoreEntitySet="HistorialBusqueda">
+                <ScalarProperty Name="fechaBusqueda" ColumnName="fechaBusqueda" />
+                <ScalarProperty Name="tipoPrecio" ColumnName="tipoPrecio" />
+                <ScalarProperty Name="categoria" ColumnName="categoria" />
+                <ScalarProperty Name="consulta" ColumnName="consulta" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuarioId" ColumnName="usuarioId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

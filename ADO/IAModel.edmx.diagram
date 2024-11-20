@@ -4,7 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="01191f9bea4a4f4ca72ddf83bd681336" Name="Diagram1" />
+      <Diagram DiagramId="01191f9bea4a4f4ca72ddf83bd681336" Name="Diagram1" >
+        <EntityTypeShape EntityType="ProyectoBusquedaModel.ias" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ProyectoBusquedaModel.HistorialBusqueda" Width="1.5" PointX="3.375" PointY="0.75" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

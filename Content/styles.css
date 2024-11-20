@@ -156,3 +156,116 @@ footer {
     outline: none;
     background-color: #b0e0f7;
 }
+
+
+/* Estilos para el contenedor flex de los selects */
+.select-container {
+    display: flex;
+    justify-content: center; /* Centrar los selectores */
+    gap: 0.5rem; /* Espacio más cercano entre selectores */
+    margin-top: 0.5rem; /* Menor espacio superior */
+    padding-bottom: -30px;
+}
+
+.btn-primary {
+    border-radius: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    --bs-btn-color: #333;
+    --bs-btn-bg: #e3f2fd;
+    --bs-btn-border-color: #8fbfef;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #0b5ed7;
+    --bs-btn-hover-border-color: #0a58ca;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0a58ca;
+    --bs-btn-active-border-color: #0a53be;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #0d6efd;
+    --bs-btn-disabled-border-color: #0d6efd;
+}
+
+.offcanvas, .offcanvas-xxl, .offcanvas-xl, .offcanvas-lg, .offcanvas-md, .offcanvas-sm {
+    --bs-offcanvas-zindex: 1045;
+    --bs-offcanvas-width: 400px;
+    --bs-offcanvas-height: 30vh;
+    --bs-offcanvas-padding-x: 1rem;
+    --bs-offcanvas-padding-y: 1rem;
+    --bs-offcanvas-color: #;
+    --bs-offcanvas-bg: #f4f6f9;
+    --bs-offcanvas-border-width: 1px;
+    --bs-offcanvas-border-color: var(--bs-border-color-translucent);
+    --bs-offcanvas-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+/* Estilos para el contenedor flex de los selects */
+.select-container {
+    display: flex;
+    justify-content: center; /* Centrar */
+}
+
+// Estilos CSS adicionales a agregar en styles.css
+
+.recommendation-card {
+    transition: transform 0.2s;
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.recommendation-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.history-item {
+    padding: 0.75rem;
+    border-bottom: 1px solid #eee;
+}
+
+.time-badge {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    background-color: #e9ecef;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.score-indicator {
+    height: 4px;
+    background: linear-gradient(90deg, #4CAF50 var(--score), transparent var(--score));
+    margin-top: 0.5rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 2rem;
+    color: #6c757d;
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+

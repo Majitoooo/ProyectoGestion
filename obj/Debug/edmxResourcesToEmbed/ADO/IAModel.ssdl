@@ -1,8 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="ProyectoBusquedaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="ProyectoBusquedaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HistorialBusqueda">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="usuarioId" Type="nvarchar" MaxLength="50" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="255" />
+    <Property Name="consulta" Type="nvarchar" MaxLength="1000" />
+    <Property Name="categoria" Type="nvarchar" MaxLength="255" />
+    <Property Name="tipoPrecio" Type="nvarchar" MaxLength="100" />
+    <Property Name="fechaBusqueda" Type="datetime" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ProyectoBusqueda.dbo.ias' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="ias">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="nombre" />
+      <PropertyRef Name="descripcion" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="tipo" Type="nvarchar" MaxLength="100" />
+    <Property Name="creador" Type="nvarchar" MaxLength="50" />
+    <Property Name="lanzamiento" Type="nvarchar" MaxLength="50" />
+    <Property Name="Categoria" Type="nvarchar" MaxLength="255" />
+    <Property Name="precio" Type="nvarchar" MaxLength="100" />
+    <Property Name="tipo_precio" Type="nvarchar" MaxLength="100" />
+    <Property Name="Enlace" Type="nvarchar" MaxLength="100" />
+  </EntityType>
   <Function Name="buscarPorNombre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="consulta" Type="nvarchar" Mode="In" />
     <Parameter Name="cantidad" Type="int" Mode="In" />
+    <Parameter Name="Categoria" Type="nvarchar" Mode="In" />
+    <Parameter Name="tipo" Type="nvarchar" Mode="In" />
+    <Parameter Name="tipo_precio" Type="nvarchar" Mode="In" />
   </Function>
-  <EntityContainer Name="ProyectoBusquedaModelStoreContainer" />
+  <Function Name="fnEliminarAcentos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar">
+    <Parameter Name="consulta" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ProyectoBusquedaModelStoreContainer">
+    <EntitySet Name="HistorialBusqueda" EntityType="Self.HistorialBusqueda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ias" EntityType="Self.ias" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>
+				SELECT
+				[ias].[id] AS [id],
+				[ias].[nombre] AS [nombre],
+				[ias].[descripcion] AS [descripcion],
+				[ias].[tipo] AS [tipo],
+				[ias].[creador] AS [creador],
+				[ias].[lanzamiento] AS [lanzamiento],
+				[ias].[Categoria] AS [Categoria],
+				[ias].[precio] AS [precio],
+				[ias].[tipo_precio] AS [tipo_precio],
+				[ias].[Enlace] AS [Enlace]
+				FROM [dbo].[ias] AS [ias]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
 </Schema>

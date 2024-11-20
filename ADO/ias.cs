@@ -10,19 +10,19 @@
 namespace Proyecto_Gestión.ADO
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class buscarPorNombre_Result
+    public partial class ias
     {
         public int id { get; set; }
         public string nombre { get; set; }
         public string descripcion { get; set; }
         public string tipo { get; set; }
         public string creador { get; set; }
-        public string Categoria { get; set; }
         public string lanzamiento { get; set; }
+        public string Categoria { get; set; }
         public string precio { get; set; }
         public string tipo_precio { get; set; }
-        public string Enlace {  get; set; }
-
+        public string Enlace { get; set; }
     }
 }
